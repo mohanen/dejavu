@@ -161,19 +161,21 @@ h1.header-text::before {
 /* fab Start */
 
 .fab-home {
-    width: 2rem;
-    height: 2rem;
+    font-family: 'Megrim', cursive;
+    width: 3rem;
+    height: 3rem;
     font-size: 2rem;
-    line-height: 1.8rem;
+    line-height: 3rem;
     position: fixed;
     left: 5%;
-    top: 5%;
+    top: 2.5%;
     background-color: #745fb5;
     color: #FFF;
     border-radius: 50%;
     text-align: center;
     cursor: pointer;
     z-index: 1000;
+    padding-right: 6px;
 }
 
 /* fab End */
