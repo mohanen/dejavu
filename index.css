@@ -66,7 +66,7 @@ h2 {
 h3 {
     font-weight: 400;
     font-size: 16px;
-    color: #108b68;
+    color: #108668; /*#108b68; Google audit contrast fix*/
 }
 
 h1, li, span, a {
