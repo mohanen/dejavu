@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Déjà Vu</title>
+
+    <!-- Basic Meta Tags -->
+    <meta charset="utf-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="keywords" content="dejavu, cheatsheet, dejavu cheatsheet, deja vu, Déjà Vu, déjà vu">
+    <meta name="description" content="A Cheatsheet hobby Project." />
+
+    <!-- Twitter Card data -->
+    <meta name="twitter:title" content="Déjà Vu">
+    <meta name="twitter:card" value="A Cheatsheet hobby Project.">
+
+    <!-- Open Graph data -->
+    <meta property="og:title" content="Déjà Vu" />
+    <meta property="og:description" content="A Cheatsheet hobby Project." />
+    <meta property="og:type" content="website" />
+
+
+    <link href="https://unpkg.com/sanitize.css" rel="stylesheet" />
+    <link href="https://unpkg.com/sanitize.css/typography.css" rel="stylesheet" />
+    <link rel="stylesheet" href="index.css">
+
+</head>
+
+<body>
+    <div class="page-container">
+        <section id="folders" class="container" v-if="enabled">
+            <h1 class="header">
+                Déjà Vu
+            </h1>
+            <div class="grid">
+                <div class="grid-item mw-300 ovrflw-auto" v-for="folder in githubFolders" v-if="folder.type=='dir'">
+                    <h2 class="header-text">
+                        {{hf.toHeaderCase(folder.name)}}
+                        <span class="badge">{{folder.files && folder.files.length}}</span>
+                    </h2>
+                    <ul class="md-list">
+                        <li v-if="folder.files" v-for="file in folder.files">
+                            <span v-on:click="openMd(file.url)">{{hf.toMdFileCase(file.name)}}</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section id="file" class="container" v-if="enabled && md">
+            <span class="fab-home" onclick="home()">
+                <</span> <h1 class="header">
+                    {{hf.toMdFileCase(md.path.replace("/"," / "))}}
+                    <span class="muted">cheatsheet</span>
+                    </h1>
+                    <div class="mdHtml" v-html="cheatSheetParser(mdit.render(atob(md.content)))"></div>
+        </section>
+
+        <footer class="footer">
+            <div class="footer-wrapper">
+                <div class="f-row container">
+                    <div class="head-container mw-300">
+                        <h1 class="header">Déjà Vu</h1>
+                        <h3>A Cheatsheet hobby Project.</h3>
+                        <!-- <h3>Inspired from #Devhints</h3> -->
+                        <br>
+                        <a class="effect-underline" href="https://github.com/mohanen/dejavu">Source</a>
+                        <a class="effect-underline" href="https://github.com/mohanen/cheatsheets">Cheatsheets</a>
+                    </div>
+                    <div class="head-container mw-400">
+                        <h2>Can't done this without</h2>
+                        <div class="f-row">
+                            <div class="">
+
+                                <ul>
+                                    <li><a class="effect-underline" href="https://devhints.io">Devhints</a></li>
+                                    <li><a class="effect-underline" href="https://github.com">Git Hub</a></li>
+                                    <li><a class="effect-underline" href="https://github.com/mohanen">Mohanen</a>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="">
+
+                                <ul>
+                                    <li><a class="effect-underline" href="https://vuejs.org">Vue</a></li>
+                                    <li><a class="effect-underline"
+                                            href="https://csstools.github.io/sanitize.css">Sanitize</a>
+                                    </li>
+                                    <li><a class="effect-underline" href="https://github.com/axios/axios">Axios</a>
+                                    </li>
+                                    <li><a class="effect-underline" href="https://markdown-it.github.io">Markdown-it</a>
+                                    </li>
+
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </footer>
+    </div>
+</body>
+
+<script src="https://cdn.jsdelivr.net/npm/vue@2.6.11"></script>
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/markdown-it/10.0.0/markdown-it.min.js"></script>
+
+<script src="index.js"></script>
+<script src="cheatSheetParser.js"></script>
+
+</html>
