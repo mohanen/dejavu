@@ -1,3 +1,12 @@
+MathJax = {
+    loader: {
+        load: ['input/asciimath']
+    },
+    asciimath: {
+        delimiters: [['$', '$']]
+    }
+};
+
 const repoDetails = {
     github_api_url: "https://api.github.com/repos",
     username: "mohanen",
@@ -22,7 +31,13 @@ var vueFolder = new Vue({
 
 var vueFile = new Vue({
     el: '#file',
-    data: { md: "", enabled: false }
+    data: { md: "", enabled: false },
+    updated: function () {
+        this.$nextTick(function () {
+            // Code that will run only after the entire view has been re-rendered
+            MathJax && MathJax.typeset &&  MathJax.typeset()
+        })
+    }
 })
 
 function updateHome() {
