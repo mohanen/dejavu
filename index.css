@@ -215,14 +215,9 @@ h1.header-text::before {
     border-top: solid 1px rgba(102, 119, 136, .1);
 }
 
-.cheat-card-content>div>* {
+.cheat-card-content>div> {
     padding: 4px 24px;
     margin: 0;
-}
-
-.cheat-card-content>div>table {
-    margin: 4px 24px;
-    padding: 0;
 }
 
 .cheat-card-content> :not(:first-child), .chld-seperators> :not(:first-child) {
@@ -230,7 +225,6 @@ h1.header-text::before {
 }
 
 .mdHtml blockquote {
-    padding: 4px 24px;
     margin: 0;
     color: #647586d4;
     background-color: #f8f9fa70;
@@ -274,7 +268,19 @@ h1.header-text::before {
     font-family: 'Fira Mono', monospace;
 }
 
-.cheat-card>div>table, .cheat-card-content>div>table {
+.mdHtml ul, .mdHtml ol{
+    padding: 0.4rem 1rem 0.4rem 2rem;
+    margin: 0;
+}
+
+.mdHtml pre,
+.mdHtml p, 
+.mdHtml blockquote {
+    padding: 0.4rem 1rem 0.4rem 1rem;
+    margin: 0;
+}
+
+.mdHtml table{
     border-collapse: collapse;
     width: 100%;
     margin: 0;
@@ -293,27 +299,24 @@ h1.header-text::before {
 }
 
 .mdHtml table td, .mdHtml table th {
-    padding-top: 4px;
-    padding-bottom: 4px;
-    padding-left: 24px;
+    /* padding-top: 0.2rem;
+    padding-bottom: 0.2rem; */
+    padding-left: 1rem;
     vertical-align: top;
     text-align: left;
     white-space: nowrap;
 }
 
-.mdHtml p img {
-    /* padding-left: 24px;
-    padding-right: 24px;
-    padding-top: 24px; */
-    margin: -4px -24px;
-}
-
 .mdHtml table td:last-child, .mdHtml table th:last-child {
-    padding-right: 24px;
+    padding-right: 1rem;
 }
 
 .mdHtml table tr {
     border-top: solid 1px rgba(102, 119, 136, .06);
+}
+
+.mdHtml p img {
+    margin: -4px -24px;
 }
 
 hr {
