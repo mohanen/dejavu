@@ -414,3 +414,12 @@ ul.md-list li:hover {
 }
 
 /* Footer End */
+
+
+/* editor Start*/
+
+body .CodeMirror, body .CodeMirror-scroll {
+	min-height: 80vh;
+}
+
+/* editor End*/

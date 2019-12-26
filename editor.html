@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Déjà Vu Edit</title>
+
+    <!-- Basic Meta Tags -->
+    <meta charset="utf-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="keywords" content="dejavu editor, cheatsheet editor, dejavu cheatsheet editor, deja vu editor">
+    <meta name="description" content="A Cheatsheet hobby Project." />
+
+    <!-- Twitter Card data -->
+    <meta name="twitter:title" content="Déjà Vu Edit">
+    <meta name="twitter:card" value="A Cheatsheet Editor for Déjà Vu.">
+
+    <!-- Open Graph data -->
+    <meta property="og:title" content="Déjà Vu Edit" />
+    <meta property="og:description" content="A Cheatsheet Editor for Déjà Vu." />
+    <meta property="og:type" content="website" />
+
+    <link href="https://unpkg.com/sanitize.css" rel="stylesheet" />
+    <link href="https://unpkg.com/sanitize.css/typography.css" rel="stylesheet" />
+    <link rel="stylesheet" href="index.css">
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/simplemde/latest/simplemde.min.css">
+
+</head>
+
+<body>
+    <textarea id="editorArea" value=""></textarea>
+</body>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/markdown-it/10.0.0/markdown-it.min.js"></script>
+<script src="https://cdn.jsdelivr.net/simplemde/latest/simplemde.min.js"></script>
+<script src="cheatSheetParser.js"></script>
+<!-- <script src="index.js"></script> -->
+<script async src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+<script>
+    MathJax = {
+        loader: {
+            load: ['input/asciimath']
+        },
+        asciimath: {
+            delimiters: [['$', '$']]
+        }
+    };
+
+    var mdit = window.markdownit({
+        html: false,        // Enable HTML tags in source
+        breaks: false,        // Convert '\n' in paragraphs into <br>
+        linkify: true,        // Autoconvert URL-like text to links
+        typographer: true,
+        quotes: '“”‘’',
+        highlight: function (/*str, lang*/) { return ''; }
+    });
+
+
+    var simplemde = new SimpleMDE({
+        element: document.getElementById("editorArea"),
+        autofocus: true,
+        autosave: {
+            enabled: true,
+            uniqueId: "dejavu_markdown",
+            delay: 1000,
+        },
+        initialValue: "# Hello world!",
+        status: true,
+        previewRender: function (plainText) {
+            setTimeout(() => { MathJax && MathJax.typeset && MathJax.typeset() }, 100)
+            if (document.getElementsByClassName("mdHtml").length < 2) {
+                updateClasses();
+            }
+            return cheatSheetParser(mdit.render(plainText)); // Returns HTML from a custom parser1
+        }
+    });
+
+    const sleep = (milliseconds) => {
+        return new Promise(resolve => setTimeout(resolve, milliseconds))
+    }
+
+    function updateClasses() {
+        if (simplemde.isPreviewActive())
+            document.getElementsByClassName("editor-preview")[0].classList.add("mdHtml");
+
+        if (simplemde.isSideBySideActive())
+            document.getElementsByClassName("editor-preview-side")[0].classList.add("mdHtml");
+    }
+
+    simplemde.toggleFullScreen();
+    simplemde.toggleSideBySide();
+
+</script>
+
+</html>
