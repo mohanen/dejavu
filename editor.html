@@ -39,6 +39,9 @@
 <script async src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
 <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 
+<script src="https://unpkg.com/prettier@1.19.1/standalone.js"></script>
+<script src="https://unpkg.com/prettier@1.19.1/parser-markdown.js"></script>
+
 <script>
     MathJax = {
         loader: {
@@ -65,15 +68,64 @@
         autosave: {
             enabled: true,
             uniqueId: "dejavu_markdown",
-            delay: 1000,
+            delay: 100,
         },
         initialValue: "# Hello world!",
         status: true,
         previewRender: function (plainText) {
-            setTimeout(() => { MathJax && MathJax.typeset && MathJax.typeset() }, 100);
+            setTimeout(() => {
+                MathJax && MathJax.typeset && MathJax.typeset()
+            }, 100);
             return "<div class='mdHtml'>" + cheatSheetParser(mdit.render(plainText)) + "</div>"; // Returns HTML from a custom parser1
-        }
+        },
+        toolbar: ["bold", "italic", "heading", "|",
+            "code", "quote", "unordered-list", "ordered-list", "|",
+            "clean-block",
+            {
+                name: "clear-all",
+                action: function customFunction(editor) {
+                    if (confirm("Are you sure?")) {
+                        simplemde.value("")
+                    }
+                },
+                className: "fa fa-trash",
+                title: "Clear all the data in the editor",
+            }, "|",
+            "link", "image", "table", "|",
+            "preview", "side-by-side", "|", {
+                name: "prettier",
+                action: function customFunction(editor) {
+                    simplemde.value(prettier.format(simplemde.value(), {
+                        parser: "markdown",
+                        plugins: prettierPlugins
+                    }))
+                },
+                className: "fa fa-indent",
+                title: "Prettify the Markdown File",
+            }, {
+                name: "download",
+                action: function customFunction(editor) {
+                    download("DejaVuCheatsheet.md", simplemde.value())
+                },
+                className: "fa fa-download",
+                title: "Download the Markdown File",
+            }
+        ],
+        styleSelectedText: false
     });
+
+    function download(filename, text) {
+        var element = document.createElement('a');
+        element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(text));
+        element.setAttribute('download', filename);
+
+        element.style.display = 'none';
+        document.body.appendChild(element);
+
+        element.click();
+
+        document.body.removeChild(element);
+    }
 
     simplemde.toggleFullScreen();
     simplemde.toggleSideBySide();
