@@ -70,25 +70,10 @@
         initialValue: "# Hello world!",
         status: true,
         previewRender: function (plainText) {
-            setTimeout(() => { MathJax && MathJax.typeset && MathJax.typeset() }, 100)
-            if (document.getElementsByClassName("mdHtml").length < 2) {
-                updateClasses();
-            }
-            return cheatSheetParser(mdit.render(plainText)); // Returns HTML from a custom parser1
+            setTimeout(() => { MathJax && MathJax.typeset && MathJax.typeset() }, 100);
+            return "<div class='mdHtml'>" + cheatSheetParser(mdit.render(plainText)) + "</div>"; // Returns HTML from a custom parser1
         }
     });
-
-    const sleep = (milliseconds) => {
-        return new Promise(resolve => setTimeout(resolve, milliseconds))
-    }
-
-    function updateClasses() {
-        if (simplemde.isPreviewActive())
-            document.getElementsByClassName("editor-preview")[0].classList.add("mdHtml");
-
-        if (simplemde.isSideBySideActive())
-            document.getElementsByClassName("editor-preview-side")[0].classList.add("mdHtml");
-    }
 
     simplemde.toggleFullScreen();
     simplemde.toggleSideBySide();
