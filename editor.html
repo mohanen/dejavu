@@ -76,7 +76,7 @@
             setTimeout(() => {
                 MathJax && MathJax.typeset && MathJax.typeset()
             }, 100);
-            return "<div class='mdHtml'>" + cheatSheetParser(mdit.render(plainText)) + "</div>"; // Returns HTML from a custom parser1
+            return "<div class="container"><div class='mdHtml'>" + cheatSheetParser(mdit.render(plainText)) + "</div></div>"; // Returns HTML from a custom parser1
         },
         toolbar: ["bold", "italic", "heading", "|",
             "code", "quote", "unordered-list", "ordered-list", "|",
