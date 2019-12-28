@@ -12,6 +12,10 @@ body {
     background-color: rgb(241, 243, 245);
 }
 
+.none {
+    display: none !important;
+}
+
 .container {
     margin-left: auto;
     margin-right: auto;
@@ -422,4 +426,7 @@ body .CodeMirror, body .CodeMirror-scroll {
 	min-height: 80vh;
 }
 
+body .CodeMirror.cm-s-paper * {
+    font-family: 'Fira Mono', monospace;
+}
 /* editor End*/

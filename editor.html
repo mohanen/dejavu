@@ -92,7 +92,12 @@
                 title: "Clear all the data in the editor",
             }, "|",
             "link", "image", "table", "|",
-            "preview", "side-by-side", "|", {
+            "preview", "side-by-side", {
+                name: "fullscreen",
+                action: SimpleMDE.toggleFullScreen,
+                className: "fa fa-arrows-alt none",
+                title: "Toggle Fullscreen",
+            }, "|", {
                 name: "prettier",
                 action: function customFunction(editor) {
                     simplemde.value(prettier.format(simplemde.value(), {
