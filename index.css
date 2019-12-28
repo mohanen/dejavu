@@ -426,7 +426,7 @@ body .CodeMirror, body .CodeMirror-scroll {
 	min-height: 80vh;
 }
 
-body .CodeMirror.cm-s-paper * {
+body .CodeMirror.cm-s-paper .CodeMirror-scroll * {
     font-family: 'Fira Mono', monospace;
 }
 /* editor End*/
