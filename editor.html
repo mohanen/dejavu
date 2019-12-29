@@ -36,8 +36,6 @@
 <script src="https://cdn.jsdelivr.net/simplemde/latest/simplemde.min.js"></script>
 <script src="cheatSheetParser.js"></script>
 <!-- <script src="index.js"></script> -->
-<script async src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
-<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 
 <script src="https://unpkg.com/prettier@1.19.1/standalone.js"></script>
 <script src="https://unpkg.com/prettier@1.19.1/parser-markdown.js"></script>
@@ -75,7 +73,7 @@
         previewRender: function (plainText) {
             setTimeout(() => {
                 MathJax && MathJax.typeset && MathJax.typeset()
-            }, 100);
+            }, 1);
             return "<div class='container'><div class='mdHtml'>" + cheatSheetParser(mdit.render(plainText)) + "</div></div>"; // Returns HTML from a custom parser1
         },
         toolbar: ["bold", "italic", "heading", "|",
@@ -136,5 +134,8 @@
     simplemde.toggleSideBySide();
 
 </script>
+
+<script async src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 
 </html>
