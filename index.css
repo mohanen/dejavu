@@ -429,4 +429,8 @@ body .CodeMirror, body .CodeMirror-scroll {
 body .CodeMirror.cm-s-paper .CodeMirror-scroll * {
     font-family: 'Fira Mono', monospace;
 }
+
+.editor-preview-side .mdHtml .grid {
+    column-count: 1;
+}
 /* editor End*/
