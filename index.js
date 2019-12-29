@@ -48,14 +48,15 @@ function updateHome() {
                 if (folder.type != "dir") {
                     return
                 }
-                vueFolder.githubFolders.push(folder);
+                var cur_idx = vueFolder.githubFolders.push(folder) - 1;
                 axios
                     .get(folder.url)
                     .then(response => {
-                        vueFolder.githubFolders[index].files = [];
+                        console.log(vueFolder.githubFolders[cur_idx])
+                        vueFolder.githubFolders[cur_idx].files = [];
                         response.data.forEach((file, file_index) => {
                             if (file.type == "file") 
-                            vueFolder.githubFolders[index].files.push(file)
+                            vueFolder.githubFolders[cur_idx].files.push(file)
                         })
                         vueFolder.$forceUpdate();
                     })
