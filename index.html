@@ -51,12 +51,12 @@
         </section>
 
         <section id="file" class="container" v-if="enabled && md" v-cloak>
-            <span class="fab-home" onclick="home()">
-                <</span> <h1 class="header">
-                    {{hf.toMdFileCase(md.path.replace("/"," / "))}}
-                    <span class="muted">cheatsheet</span>
-                    </h1>
-                    <div class="mdHtml" v-html="cheatSheetParser(mdit.render(atob(md.content)))"></div>
+            <span class="fab-home" onclick="home()">◀</span>
+            <h1 class="header">
+                {{hf.toMdFileCase(md.path.replace("/"," / "))}}
+                <span class="muted">cheatsheet</span>
+            </h1>
+            <div class="mdHtml" v-html="cheatSheetParser(mdit.render(atob(md.content)))"></div>
         </section>
 
         <footer class="footer">
