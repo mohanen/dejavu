@@ -44,6 +44,7 @@ function updateHome() {
     axios
         .get(repo_content_url)
         .then(response => {
+            vueFolder.githubFolders = [];
             response.data.forEach((folder, index) => {
                 if (folder.type != "dir") {
                     return
