@@ -322,6 +322,7 @@ h1.header-text::before {
 
 .mdHtml p img {
     /* margin: -4px -24px; */
+    width: 100%;
 }
 
 hr {
