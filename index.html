@@ -35,14 +35,14 @@
             <h1 class="header">
                 Déjà Vu
             </h1>
-            <div class="grid">
+            <div class="grid" v-cloak>
                 <div class="grid-item mw-300 ovrflw-auto" v-for="folder in githubFolders" v-if="folder.type=='dir'">
                     <h2 class="header-text">
                         {{hf.toHeaderCase(folder.name)}}
                         <span class="badge">{{folder.files && folder.files.length}}</span>
                     </h2>
-                    <ul class="md-list">
-                        <li v-if="folder.files" v-for="file in folder.files">
+                    <ul class="md-list" v-if="folder.files">
+                        <li v-for="file in folder.files" v-if="file.type=='file'">
                             <span v-on:click="openMd(file.url)">{{hf.toMdFileCase(file.name)}}</span>
                         </li>
                     </ul>
@@ -50,7 +50,7 @@
             </div>
         </section>
 
-        <section id="file" class="container" v-if="enabled && md">
+        <section id="file" class="container" v-if="enabled && md" v-cloak>
             <span class="fab-home" onclick="home()">
                 <</span> <h1 class="header">
                     {{hf.toMdFileCase(md.path.replace("/"," / "))}}
@@ -78,9 +78,8 @@
                                 <ul>
                                     <li><a class="effect-underline" href="https://devhints.io">Devhints</a></li>
                                     <li><a class="effect-underline" href="https://github.com">Git Hub</a></li>
-                                    <li><a class="effect-underline" href="https://www.mathjax.org">Mathjax</a>
-                                    <li><a class="effect-underline" href="https://github.com/mohanen">Mohanen</a>
-                                    </li>
+                                    <li><a class="effect-underline" href="https://www.mathjax.org">Mathjax</a></li>
+                                    <li><a class="effect-underline" href="https://github.com/mohanen">Mohanen</a></li>
                                 </ul>
                             </div>
                             <div class="">

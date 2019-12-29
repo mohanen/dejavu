@@ -44,12 +44,19 @@ function updateHome() {
     axios
         .get(repo_content_url)
         .then(response => {
-            vueFolder.githubFolders = response.data;
-            vueFolder.githubFolders.forEach((folder, index) => {
+            response.data.forEach((folder, index) => {
+                if (folder.type != "dir") {
+                    return
+                }
+                vueFolder.githubFolders.push(folder);
                 axios
                     .get(folder.url)
                     .then(response => {
-                        vueFolder.githubFolders[index].files = response.data;
+                        vueFolder.githubFolders[index].files = [];
+                        response.data.forEach((file, file_index) => {
+                            if (file.type == "file") 
+                            vueFolder.githubFolders[index].files.push(file)
+                        })
                         vueFolder.$forceUpdate();
                     })
             });
