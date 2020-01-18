@@ -297,6 +297,10 @@ h2.line::after {
 
 .mdHtml .katex { font-size: 1.2em; }
 
+.mdHtml .katex * { 
+    font-family: 'KaTeX_Main', 'Times New Roman' , 'serif';   
+}
+
 .mdHtml .katex-display {
      font-size: 1.2rem; 
      margin:0.5em 0;
