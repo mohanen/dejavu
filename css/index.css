@@ -29,14 +29,13 @@ body {
     /* Masonry bricks or child elements */
     display: inline-block;
     width: 100%;
-    padding: 0 20px;
+    padding: 0 20px 20px 20px;
 }
 
 .badge {
     display: inline-block;
     padding: .24rem 0.6rem;
     border-radius: 30px;
-    font-size: .8rem;
     text-align: center;
     background: #14af83;
     color: #fefefe;
@@ -51,31 +50,40 @@ body {
 
 /* Typhography Start */
 
+html {
+    font-size: 14px;
+}
+
 * {
     font-family: 'Montserrat', sans-serif;
     color: #333447;
-    /* line-height: 1.5; for mathjax*/
+    /* font-size: 1rem;
+    line-height: 1.5em; */
 }
 
 h1 {
     font-weight: 200;
-    font-size: 48px;
+    font-size: 2.4rem;
 }
 
 h2 {
     font-weight: 400;
-    font-size: 24px;
+    font-size: 1.5rem;
     color: #745fb5;
 }
 
 h3 {
     font-weight: 400;
-    font-size: 16px;
+    font-size: 1.2rem;
     color: #108668; /*#108b68; Google audit contrast fix*/
 }
 
 h1, li, span, a {
     color: rgb(85, 99, 113);
+}
+
+.badge {
+    font-size: .8rem;
 }
 
 /*effect-underline*/
@@ -102,6 +110,8 @@ h1, li, span, a {
     transform: scale(1);
 }
 
+
+/* Not used */
 h2.line::after {
     margin-left: 24px;
     content: '';
@@ -127,20 +137,19 @@ h2.line::after {
 .header {
     margin-top: 0;
     padding-top: 5rem;
-}
-
-.header {
     text-align: center;
     font-family: 'Megrim', cursive;
 }
 
-h1.header-text::before {
-    content: '# ';
-    color: rgba(190, 196, 204);
+.header-norm {
+    margin-top: 0;
+    padding-top: 5rem;
+    text-align: center;
 }
 
-.header-text {
+.mdHtml h1, .header-text {
     padding-bottom: 5px;
+    padding-left: 0.2em;
     border-bottom: solid 1px rgba(102, 119, 136, .2);
     position: relative;
 }
@@ -206,13 +215,13 @@ h1.header-text::before {
     border-radius: 0;
 }
 
-.cheat-card-title {
+.mdHtml h2, .cheat-card-title {
     margin: 0.5rem;
     overflow: hidden;
     white-space: nowrap;
 }
 
-.cheat-card-content-title {
+.mdHtml h3, .cheat-card-content-title {
     padding: 4px 16px;
     margin: 0;
     color: #678;
@@ -235,10 +244,10 @@ h1.header-text::before {
     background-color: #f8f9fa70;
 }
 
-.mdHtml blockquote p {
+.mdHtml blockquote p, .mdHtml blockquote .paragraph {
     margin: 0;
     padding: 0;
-    font-size: 1rem;
+    /* font-size: 1rem; */
     font-weight: 400;
     color: inherit;
 }
@@ -268,7 +277,7 @@ h1.header-text::before {
     overflow-x: hidden;
     overflow-x: auto;
     background: #fff;
-    font-size: .96em;
+    /* font-size: .96em; */
     line-height: 1.5;
     font-family: 'Fira Mono', monospace;
 }
@@ -279,10 +288,18 @@ h1.header-text::before {
 }
 
 .mdHtml pre,
-.mdHtml p, 
-.mdHtml blockquote {
+.mdHtml p, .mdHtml div>.paragraph,
+.mdHtml blockquote,
+.mdHtml .math {
     padding: 0.4rem 1rem 0.4rem 1rem;
     margin: 0;
+}
+
+.mdHtml .katex { font-size: 1.2em; }
+
+.mdHtml .katex-display {
+     font-size: 1.2rem; 
+     margin:0.5em 0;
 }
 
 .mdHtml table{
@@ -320,7 +337,7 @@ h1.header-text::before {
     border-top: solid 1px rgba(102, 119, 136, .06);
 }
 
-.mdHtml p img {
+.mdHtml p img, .mdHtml .paragraph img {
     /* margin: -4px -24px; */
     width: 100%;
 }

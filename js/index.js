@@ -1,12 +1,3 @@
-MathJax = {
-    loader: {
-        load: ['input/asciimath']
-    },
-    asciimath: {
-        delimiters: [['$', '$']]
-    }
-};
-
 const repoDetails = {
     github_api_url: "https://api.github.com/repos",
     username: "mohanen",
@@ -14,15 +5,6 @@ const repoDetails = {
 }
 const repo_url = repoDetails.github_api_url + "/" + repoDetails.username + "/" + repoDetails.repo_name;
 const repo_content_url = repo_url + "/contents";
-
-var mdit = window.markdownit({
-    html: false,        // Enable HTML tags in source
-    breaks: false,        // Convert '\n' in paragraphs into <br>
-    linkify: true,        // Autoconvert URL-like text to links
-    typographer: true,
-    quotes: '“”‘’',
-    highlight: function (/*str, lang*/) { return ''; }
-});
 
 var vueFolder = new Vue({
     el: '#folders',
@@ -32,12 +14,6 @@ var vueFolder = new Vue({
 var vueFile = new Vue({
     el: '#file',
     data: { md: "", enabled: false },
-    updated: function () {
-        this.$nextTick(function () {
-            // Code that will run only after the entire view has been re-rendered
-            MathJax && MathJax.typeset &&  MathJax.typeset()
-        })
-    }
 })
 
 function updateHome() {
@@ -53,7 +29,7 @@ function updateHome() {
                 axios
                     .get(folder.url)
                     .then(response => {
-                        console.log(vueFolder.githubFolders[cur_idx])
+                        //console.log(vueFolder.githubFolders[cur_idx])
                         vueFolder.githubFolders[cur_idx].files = [];
                         response.data.forEach((file, file_index) => {
                             if (file.type == "file") 
@@ -73,7 +49,7 @@ function openMd(mdFileUrl) {
         .get(mdFileUrl)
         .then(response => {
             vueFile.md = response.data;
-            console.log(response.data);
+            //console.log(response.data);
             vueFile.$forceUpdate();
         })
 }
@@ -97,3 +73,4 @@ const hf = {
 }
 
 home();
+

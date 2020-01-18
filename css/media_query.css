@@ -4,8 +4,8 @@
         column-count: 3;
     }
     .container {
-        width: 70%;
-        max-width: 80rem
+        width: 75%;
+        max-width: 90rem
     }
 }
 
@@ -15,7 +15,7 @@
         column-count: 2;
     }
     .container {
-        width: 80%;
+        width: 85%;
     }
 }
 
