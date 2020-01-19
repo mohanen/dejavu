@@ -12,12 +12,12 @@ window.WebFontConfig = {
 const HeaderWrapperAttr = {
     1: 'class=""',
     2: 'class="grid-item mw-300"',
-    3: 'class="cheat-card-content ovrflw-auto"',
+    3: 'class="cheat-card-content"',
 }
 const HeaderChildWrapperAttr = {
     1: 'class="grid"',
-    2: 'class="cheat-card ovrflw-auto"',
-    3: 'class="chld-seperators ovrflw-auto"',
+    2: 'class="cheat-card"',
+    3: 'class="chld-seperators"',
 }
 
 const katexOptions = {
@@ -88,7 +88,7 @@ function createCheatSheet(String) {
             headersStack.push(item.level);
         }
 
-        htmlString += htmlOutput(item);
+        htmlString += "<div class='ovrflw-auto'>" + htmlOutput(item) + "</div>";
 
         if (item.type == "heading" && item.level < 3) {
             htmlString += "<div " + HeaderChildWrapperAttr[item.level] + " >";
