@@ -88,7 +88,7 @@ function createCheatSheet(String) {
             headersStack.push(item.level);
         }
 
-        htmlString += "<div class='ovrflw-auto'>" + htmlOutput(item) + "</div>";
+        htmlString += "<div class='ovrflw-x-auto'>" + htmlOutput(item) + "</div>";
 
         if (item.type == "heading" && item.level < 3) {
             htmlString += "<div " + HeaderChildWrapperAttr[item.level] + " >";

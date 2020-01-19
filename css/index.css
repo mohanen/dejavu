@@ -126,6 +126,12 @@ h2.line::after {
     overflow: auto;
 }
 
+
+.ovrflw-x-auto {
+    overflow-x: auto;
+    overflow-y: hidden;
+}
+
 .muted {
     color: rgba(190, 196, 204);
 }
