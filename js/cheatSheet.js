@@ -78,7 +78,7 @@ function createCheatSheet(String) {
     var headersStack = []
 
     syntaxTree.forEach((item, idx) => {
-        if (item.type == "heading") {
+        if (item.type == "heading" && item.level < 3) {
             // check wether we its new heirachy start if yes close the old ones
             while (headersStack.length > 0 && item.level <= headersStack.last()) {
                 headersStack.pop();
@@ -90,7 +90,7 @@ function createCheatSheet(String) {
 
         htmlString += htmlOutput(item);
 
-        if (item.type == "heading") {
+        if (item.type == "heading" && item.level < 3) {
             htmlString += "<div " + HeaderChildWrapperAttr[item.level] + " >";
             headersStack.push(item.level);
         }

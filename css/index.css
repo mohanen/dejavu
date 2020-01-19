@@ -234,8 +234,8 @@ h2.line::after {
     margin: 0;
 }
 
-.cheat-card-content> :not(:first-child), .chld-seperators> :not(:first-child) {
-    border-top: solid 1px rgba(102, 119, 136, .06);
+.cheat-card> :not(:first-child), .cheat-card-content> :not(:first-child), .chld-seperators> :not(:first-child) {
+    border-top: solid 1px rgba(102, 119, 136, .08);
 }
 
 .mdHtml blockquote {
@@ -287,6 +287,10 @@ h2.line::after {
     margin: 0;
 }
 
+.mdHtml ul li {
+    padding-bottom: 0.4em;
+}
+
 .mdHtml pre,
 .mdHtml p, .mdHtml div>.paragraph,
 .mdHtml blockquote,
@@ -295,15 +299,24 @@ h2.line::after {
     margin: 0;
 }
 
-.mdHtml .katex { font-size: 1.2em; }
+.katex-display > .katex {
+    white-space: pre-wrap !important;
+}
+
+.mdHtml .katex { 
+    font-size: 1.1em; 
+    line-height: 1.2;
+    white-space: normal;
+    text-indent: 0;
+}
 
 .mdHtml .katex * { 
-    font-family: 'KaTeX_Main', 'Times New Roman' , 'serif';   
+    font-family: 'KaTeX_Main', 'Times New Roman' , 'serif';
 }
 
 .mdHtml .katex-display {
-     font-size: 1.2rem; 
-     margin:0.5em 0;
+     font-size: 1rem; 
+     margin:0.2em 0;
 }
 
 .mdHtml table{
@@ -338,7 +351,7 @@ h2.line::after {
 }
 
 .mdHtml table tr {
-    border-top: solid 1px rgba(102, 119, 136, .06);
+    border-top: solid 1px rgba(102, 119, 136, .08);
 }
 
 .mdHtml p img, .mdHtml .paragraph img {
