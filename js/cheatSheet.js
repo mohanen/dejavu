@@ -1,14 +1,5 @@
 "use strict";
 
-window.WebFontConfig = {
-    custom: {
-        families: ['KaTeX_AMS', 'KaTeX_Caligraphic:n4,n7', 'KaTeX_Fraktur:n4,n7',
-            'KaTeX_Main:n4,n7,i4,i7', 'KaTeX_Math:i4,i7', 'KaTeX_Script',
-            'KaTeX_SansSerif:n4,n7,i4', 'KaTeX_Size1', 'KaTeX_Size2', 'KaTeX_Size3',
-            'KaTeX_Size4', 'KaTeX_Typewriter'],
-    },
-};
-
 const HeaderWrapperAttr = {
     1: 'class=""',
     2: 'class="grid-item mw-300"',
@@ -20,31 +11,8 @@ const HeaderChildWrapperAttr = {
     3: 'class="chld-seperators"',
 }
 
-const katexOptions = {
-    displayMode: true,
-    throwOnError: false,
-    output: "html"
-}
-
-const katexInlineOptions = {
-    displayMode: false,
-    throwOnError: false,
-    output: "html"
-}
-
 
 const mathRule = {
-    // Specify the order in which this rule is to be run
-    order: SimpleMarkdown.defaultRules.text.order - 0.8,
-    // First we check whether a string matches
-    match: function (source) { return /^\$\$([\s\S]+?)\$\$(?!\$)/.exec(source); },
-    // Then parse this string into a syntax node
-    parse: function (capture, parse, state) { return { content: capture[1] }; },
-    // Finally transform this syntax node into a an html element:
-    html: function (node, output) { return katex.renderToString(node.content, katexOptions); },
-};
-
-const mathInlineRule = {
     // Specify the order in which this rule is to be run
     order: SimpleMarkdown.defaultRules.text.order - 0.2,
     // First we check whether a string matches
@@ -52,11 +20,11 @@ const mathInlineRule = {
     // Then parse this string into a syntax node
     parse: function (capture, parse, state) { return { content: capture[1] }; },
     // Finally transform this syntax node into a an html element:
-    html: function (node, output) { return katex.renderToString(node.content, katexInlineOptions); },
+    // html: function (node, output) { return katex.renderToString(node.content, katexInlineOptions); },
+    html: function (node, output) { return MathJax && MathJax.asciimath2svg && MathJax.asciimath2svg(node.content).outerHTML; },
 };
 
 const mdRules = SimpleMarkdown.defaultRules;
-mdRules["mathInlineRule"] = mathInlineRule;
 mdRules["mathRule"] = mathRule;
 
 const rawBuiltParser = SimpleMarkdown.parserFor(mdRules);

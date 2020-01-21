@@ -305,26 +305,6 @@ h2.line::after {
     margin: 0;
 }
 
-.katex-display > .katex {
-    white-space: pre-wrap !important;
-}
-
-.mdHtml .katex { 
-    font-size: 1.1em; 
-    line-height: 1.2;
-    white-space: normal;
-    text-indent: 0;
-}
-
-.mdHtml .katex * { 
-    font-family: 'KaTeX_Main', 'Times New Roman' , 'serif';
-}
-
-.mdHtml .katex-display {
-     font-size: 1rem; 
-     margin:0.2em 0;
-}
-
 .mdHtml table{
     border-collapse: collapse;
     width: 100%;

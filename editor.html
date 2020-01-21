@@ -25,7 +25,6 @@
     <link rel="stylesheet" href="css/index.css">
 
     <link rel="stylesheet" href="css/simplemde.min.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.css" crossorigin="anonymous">
 
 </head>
 
@@ -39,7 +38,15 @@
 <script src="https://unpkg.com/prettier@1.19.1/parser-markdown.js"></script>
 
 <script src="js/simpleMarkdown.min.js"></script>
-<script defer src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.js" crossorigin="anonymous"></script>
+
+<script>
+    MathJax = {
+        loader: { load: ['input/asciimath', 'output/svg'] },
+    };
+</script>
+<script type="text/javascript" id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/startup.js">
+</script>
+
 <script src="js/cheatSheet.js"></script>
 
 <script>
@@ -56,7 +63,7 @@
         initialValue: "# Hello world!",
         status: true,
         previewRender: function (plainText) {
-            return "<div class='container'><div class='mdHtml'>" + createCheatSheet((plainText)) + "</div></div>"; // Returns HTML from a custom parser1
+            return "<div class='container'><div class='mdHtml'>" + createCheatSheet(plainText) + "</div></div>"; // Returns HTML from a custom parser1
         },
         toolbar: ["bold", "italic", "heading", "|",
             "code", "quote", "unordered-list", "ordered-list", "|",
@@ -113,7 +120,7 @@
     }
 
     simplemde.toggleFullScreen();
-    simplemde.toggleSideBySide();
+    // simplemde.toggleSideBySide();
 
 </script>
 
