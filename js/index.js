@@ -32,8 +32,8 @@ function updateHome() {
                         //console.log(vueFolder.githubFolders[cur_idx])
                         vueFolder.githubFolders[cur_idx].files = [];
                         response.data.forEach((file, file_index) => {
-                            if (file.type == "file") 
-                            vueFolder.githubFolders[cur_idx].files.push(file)
+                            if (file.type == "file")
+                                vueFolder.githubFolders[cur_idx].files.push(file)
                         })
                         vueFolder.$forceUpdate();
                     })
@@ -70,6 +70,14 @@ const hf = {
     },
     toHeaderCase: text => (hf.toSentenceCase(text).toUpperCase()),
     toMdFileCase: text => (hf.toSentenceCase(text).slice(0, -".md".length)),
+    /**
+     * ASCII to Unicode (decode Base64 to original data)
+     * @param {string} b64
+     * @return {string}
+    */
+    base64ToUnicode: function (b64) {
+        return decodeURIComponent(escape(atob(b64)));
+    }
 }
 
 home();

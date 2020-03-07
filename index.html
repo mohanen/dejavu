@@ -61,7 +61,7 @@
                 {{hf.toMdFileCase(md.path.replace("/"," / "))}}
                 <!-- <span class="muted">cheatsheet</span> -->
             </h1>
-            <div class="mdHtml" v-html="createCheatSheet(atob(md.content))"></div>
+            <div class="mdHtml" v-html="createCheatSheet(hf.base64ToUnicode(md.content))"></div>
         </section>
 
         <footer class="footer">
