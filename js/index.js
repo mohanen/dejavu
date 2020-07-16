@@ -68,7 +68,7 @@ const hf = {
         var result = text.replace(/([A-Z])/g, " $1");
         return result.charAt(0).toUpperCase() + result.slice(1);
     },
-    toHeaderCase: text => (hf.toSentenceCase(text).toUpperCase()),
+    toHeaderCase: text => (text.replace(/_/g, ' ').toUpperCase()),
     toMdFileCase: text => (text.replace(/_/g, ' ').slice(0, -".md".length)),
     /**
      * ASCII to Unicode (decode Base64 to original data)
