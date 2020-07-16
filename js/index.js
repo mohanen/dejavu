@@ -69,7 +69,7 @@ const hf = {
         return result.charAt(0).toUpperCase() + result.slice(1);
     },
     toHeaderCase: text => (hf.toSentenceCase(text).toUpperCase()),
-    toMdFileCase: text => (hf.toSentenceCase(text).slice(0, -".md".length)),
+    toMdFileCase: text => (text.replace(/_/g, ' ').slice(0, -".md".length)),
     /**
      * ASCII to Unicode (decode Base64 to original data)
      * @param {string} b64
